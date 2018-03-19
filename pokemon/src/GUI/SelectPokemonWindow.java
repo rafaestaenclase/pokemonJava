@@ -54,7 +54,6 @@ private CombatWindow cw;
         jbExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(391, 536));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -350,12 +349,14 @@ private CombatWindow cw;
 
     private void jbExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitActionPerformed
         this.setVisible(false);
+        cw.setVisible(true);
     }//GEN-LAST:event_jbExitActionPerformed
 
     private void jbImg1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbImg1ActionPerformed
         try {
             cw.loadFriendPokemon(001);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -367,6 +368,7 @@ private CombatWindow cw;
         try {
             cw.loadFriendPokemon(002);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -378,6 +380,7 @@ private CombatWindow cw;
         try {
             cw.loadFriendPokemon(003);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -389,6 +392,7 @@ private CombatWindow cw;
         try {
             cw.loadFriendPokemon(004);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -400,6 +404,7 @@ private CombatWindow cw;
         try {
             cw.loadFriendPokemon(005);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -411,6 +416,7 @@ private CombatWindow cw;
         try {
             cw.loadFriendPokemon(006);
             this.setVisible(false);
+            cw.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(SelectPokemonWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

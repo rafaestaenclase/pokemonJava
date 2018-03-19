@@ -1,5 +1,5 @@
-[Sat Mar 17 11:15:47.780328 2018] [mpm_winnt:notice] [pid 46688:tid 816] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Sat Mar 17 11:15:47.780829 2018] [mpm_winnt:notice] [pid 46688:tid 816] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Sat Mar 17 11:15:47.780829 2018] [core:notice] [pid 46688:tid 816] AH00094: Command line: 'C:\\Users\\Pistacho\\Desktop\\Proyectos\\java\\github\\pokemonJava\\usbwebserver/apache2/bin/httpd_usbwv8.exe -d C:/Users/Pistacho/Desktop/Proyectos/java/github/pokemonJava/usbwebserver/apache2'
-[Sat Mar 17 11:15:47.792340 2018] [mpm_winnt:notice] [pid 46688:tid 816] AH00418: Parent: Created child process 46740
-[Sat Mar 17 11:15:48.115150 2018] [mpm_winnt:notice] [pid 46740:tid 824] AH00354: Child: Starting 64 worker threads.
+[Mon Mar 19 15:28:24.600351 2018] [mpm_winnt:notice] [pid 458016:tid 628] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Mon Mar 19 15:28:24.600851 2018] [mpm_winnt:notice] [pid 458016:tid 628] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Mon Mar 19 15:28:24.600851 2018] [core:notice] [pid 458016:tid 628] AH00094: Command line: 'C:\\Users\\Pistacho\\Desktop\\Proyectos\\java\\github\\pokemonJava\\usbwebserver/apache2/bin/httpd_usbwv8.exe -d C:/Users/Pistacho/Desktop/Proyectos/java/github/pokemonJava/usbwebserver/apache2'
+[Mon Mar 19 15:28:24.612362 2018] [mpm_winnt:notice] [pid 458016:tid 628] AH00418: Parent: Created child process 458068
+[Mon Mar 19 15:28:24.994229 2018] [mpm_winnt:notice] [pid 458068:tid 4] AH00354: Child: Starting 64 worker threads.
