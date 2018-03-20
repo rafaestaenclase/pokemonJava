@@ -1,6 +1,7 @@
 package pokemon;
 
 import GUI.*;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.bd.*;
@@ -11,7 +12,8 @@ public class main {
     private static CombatWindow cw;
     private static int friendAnimate;
     
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
+
         new Launcher().setVisible(true);
     }
     
