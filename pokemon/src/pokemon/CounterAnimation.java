@@ -12,7 +12,7 @@ class CounterAnimation extends TimerTask {
     
 public void run() {
        seconds = seconds -1;
-       System.out.println(seconds);
+       /*System.out.println(seconds);*/
        main.animationTimeTest(seconds);
     }
 

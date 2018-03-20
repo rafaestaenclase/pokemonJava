@@ -12,6 +12,10 @@ public class main {
     private static int friendAnimate;
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        new Launcher().setVisible(true);
+    }
+    
+    public static void combatWindowOn(){
         cw = new CombatWindow();
         cw.setVisible(true);
     }

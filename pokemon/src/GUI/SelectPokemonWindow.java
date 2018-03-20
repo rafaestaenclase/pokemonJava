@@ -488,7 +488,7 @@ private CombatWindow cw;
     public void loadPokemon(Pokemon pokemon, JButton buttom, JProgressBar health, JLabel label){
         BufferedImage img = null;
                     try {
-                        img = ImageIO.read(getClass().getResource("../pokemonImage/"+pokemon.getId()+".png"));
+                        img = ImageIO.read(getClass().getResource("/pokemonImage/"+pokemon.getId()+".png"));
                     } catch (IOException ex) {
                         Logger.getLogger(CombatWindow.class.getName()).log(Level.SEVERE, null, ex);
                     }

@@ -10,7 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.media.AudioClip;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -65,6 +70,9 @@ public class CombatWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -188,7 +196,7 @@ public class CombatWindow extends javax.swing.JFrame {
         jPanel8.setOpaque(false);
 
         jlFriendName.setBackground(new java.awt.Color(153, 255, 153));
-        jlFriendName.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
+        jlFriendName.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 14)); // NOI18N
         jlFriendName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlFriendName.setText("NOMBRE");
         jlFriendName.setToolTipText("");
@@ -272,7 +280,7 @@ public class CombatWindow extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jlEnemyName.setBackground(new java.awt.Color(255, 153, 153));
-        jlEnemyName.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
+        jlEnemyName.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 14)); // NOI18N
         jlEnemyName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlEnemyName.setText("NOMBRE");
         jlEnemyName.setToolTipText("");
@@ -376,7 +384,7 @@ public class CombatWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,18 +398,30 @@ public class CombatWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-               showPokemon();
-               spw.setCombatWindow(this);
-               spw.setVisible(true);
-               friendId.setText("cxs");
-               
-               BufferedImage img = null;
-                ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/background/background.png"));
+            try {
+                showPokemon();
+                spw.setCombatWindow(this);
+                spw.setVisible(true);
+                friendId.setText("cxs");
+                
+                BufferedImage img = null;
+                ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/background/background.png"));
                 ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(jlBackground.getWidth(), jlBackground.getHeight(), WIDTH));
-
                 jlBackground.setIcon(yy);
-               
-               
+                
+                
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(ClassLoader.getSystemResource("pokemonImage/music.wav")));
+                clip.loop(4);
+                
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(CombatWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedAudioFileException ex) {
+                Logger.getLogger(CombatWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(CombatWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
     }//GEN-LAST:event_formWindowOpened
 
     private void jbResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbResetActionPerformed
@@ -469,6 +489,10 @@ public class CombatWindow extends javax.swing.JFrame {
             Logger.getLogger(CombatWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbAttack1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -544,7 +568,7 @@ public class CombatWindow extends javax.swing.JFrame {
                 enemyId.setVisible(false);
 
                 BufferedImage img = null;
-                ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/front/stop/"+pokemon.getId()+".gif"));
+                ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/front/stop/"+pokemon.getId()+".gif"));
                 ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(90, 90, WIDTH));
                 
                 enemyImg.setIcon(yy);
@@ -577,7 +601,7 @@ public class CombatWindow extends javax.swing.JFrame {
             friendId.setText(pokemon.getId());
             friendId.setVisible(false);
             BufferedImage img = null;
-            ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/back/stop/"+pokemon.getId()+".gif"));
+            ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/back/stop/"+pokemon.getId()+".gif"));
             ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(100, 100, WIDTH));
             friendImg.setIcon(yy);
 
@@ -596,13 +620,12 @@ public class CombatWindow extends javax.swing.JFrame {
     }
     
     public void friendAttack(String attackName) throws SQLException, ClassNotFoundException{
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/back/stop/"+friendId.getText()+".gif"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/back/stop/"+friendId.getText()+".gif"));
         ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(110, 110, WIDTH));
         friendImg.setIcon(yy);
         
         jpbEnemyHealth.setValue(jpbEnemyHealth.getValue() - LoadAttack.loadFriendAttack(attackName));
         jlLog.setText("<html>"+jlFriendName.getText()+ " usó "+attackName+"</html>");
-        this.update(this.getGraphics());
         main.animationTime(0);
         
     }
@@ -626,12 +649,11 @@ public class CombatWindow extends javax.swing.JFrame {
                         }
                     }
 
-                ImageIcon uu = new ImageIcon(this.getClass().getResource("../pokemonImage/front/attack/"+enemyId.getText()+".gif"));
+                ImageIcon uu = new ImageIcon(this.getClass().getResource("/pokemonImage/front/attack/"+enemyId.getText()+".gif"));
                 ImageIcon ee = new ImageIcon(uu.getImage().getScaledInstance(100, 100, WIDTH));
                 enemyImg.setIcon(ee);
                 jpbFriendHealth.setValue(jpbFriendHealth.getValue() - LoadAttack.loadFriendAttack(attackName));
                 jlLog.setText("<html>E. "+jlEnemyName.getText()+" usó "+attackName+"</html>");
-                this.update(this.getGraphics());
                 main.animationTime(1);
                 checkLife();
         } catch (pokemonDieException e){
@@ -660,12 +682,12 @@ public class CombatWindow extends javax.swing.JFrame {
     public void endAnimation(int seconds, int friendAnimate) {
         if(seconds == 0){
             if (friendAnimate == 0) {
-                ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/back/stop/"+friendId.getText()+".gif"));
+                ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/back/stop/"+friendId.getText()+".gif"));
                 ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(100, 100, WIDTH));
                 friendImg.setIcon(yy);
                 enemyAttack();
             }else if(friendAnimate == 1){
-                ImageIcon ii = new ImageIcon(this.getClass().getResource("../pokemonImage/front/stop/"+enemyId.getText()+".gif"));
+                ImageIcon ii = new ImageIcon(this.getClass().getResource("/pokemonImage/front/stop/"+enemyId.getText()+".gif"));
                 ImageIcon yy = new ImageIcon(ii.getImage().getScaledInstance(90, 90, WIDTH));
                 enemyImg.setIcon(yy);
                 jlLog.setText("<html>¿Qué usarás?</html>");
